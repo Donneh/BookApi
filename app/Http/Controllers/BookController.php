@@ -21,6 +21,10 @@ class BookController extends Controller
 
     public function search($query, $offset = null, $limit = null)
     {
-        return BookResource::collection(Book::all()->skip($offset)->take($limit));
+        return BookResource::collection(
+            Book::where('title', 'LIKE', "%$query%")->get()
+                ->skip($offset)
+                ->take($limit)
+        );
     }
 }
