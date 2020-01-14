@@ -6,8 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publisher extends Model
 {
-    public function index()
+//    public function index()
+//    {
+//        return Publisher::all();
+//    }
+
+    public function books()
     {
-        return Publisher::all();
+        return $this->belongsToMany('App\Book');
     }
 }
