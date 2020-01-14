@@ -20,10 +20,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('publishers', 'PublisherController@index');
     Route::get('publishers/{publisher}', 'PublisherController@show');
 
-    Route::get('books', 'BooksController@index');
-    Route::get('books/highlighted', 'BooksController@highlighted');
-    Route::get('books/{book}', 'BooksController@show');
-    Route::get('books/search/{query}', 'BooksController@search');
+    Route::get('books', 'BookController@index');
+    Route::get('books/highlighted', 'BookController@highlighted');
+    Route::get('books/{book}', 'BookController@show');
+    Route::get('books/search/{query}', 'BookController@search');
 });
 
 
