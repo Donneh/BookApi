@@ -15,11 +15,12 @@ class BooksController extends Controller
 
     public function show(Book $book)
     {
-        return new BookResource($book);
+        return new BookResource($book->load(['authors', 'publishers']));
     }
 
     public function search($query)
     {
-        return Book::where('title', 'LIKE', "%$query%")->get();
+        $book = Book::where('title', 'LIKE', "%$query%")->get();
+        return new BookResource($book->load(['authors', 'publishers']));
     }
 }
