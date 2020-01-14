@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('books', 'BookController@index');
     Route::get('books/highlighted', 'BookController@highlighted');
     Route::get('books/{book}', 'BookController@show');
-    Route::get('books/search/{query}', 'BookController@search');
+    Route::get('books/search/{query}/{offset?}/{limit?}', 'BookController@search');
 });
 
 

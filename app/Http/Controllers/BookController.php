@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\Http\Resources\Book as BookResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
@@ -18,10 +19,8 @@ class BookController extends Controller
         return new BookResource($book->load(['authors', 'publishers']));
     }
 
-    public function search($query)
+    public function search($query, $offset = null, $limit = null)
     {
-        $book = Book::where('title', 'LIKE', "%$query%")->get();
-//        $book->load(['authors', 'publishers']);
-        return $book;
+        return Book::all()->skip($offset)->take($limit);
     }
 }
